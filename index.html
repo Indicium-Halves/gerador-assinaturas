@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Gerador de assinatura Indicium</h1>
+    <br>
+    <p id="tutorial">Como usar: Insira seus dados nos campos abaixo e ao clicar em Gerar Assinatura
+                    para criar uma assinatura já pronta para inserir no seu e-mail. <br><br>
+                    Para fazer isso basta selecionar a assinatura gerada com o mouse, copiar o conteúdo e colar
+                    diretamente na sua assinatura de email.
+    </p>
+    <br>
+    <form id="form-assinatura" onsubmit="return false">
+        <label for="nome-form">Nome</label>
+        <input type="text" id="nome-form" name="nome">
+            <br>
+        <label for="cargo-form">Cargo</label>
+        <input type="text" id="cargo-form" name = "cargo">
+            <br>
+        <label for="email-form">Email</label>
+        <input type="text" id="email-form" name = "email">
+            <br>
+        <label for="celular-form">Você deseja incluir seu telefone/celular?</label><br>
+        <input type="radio" id="sim" name="tel-radio" value="Sim" onclick="showtell(true)">
+        <label for="sim">Sim</label>
+        <input type="radio" id="nao" name="tel-radio" value="Não" onclick="showtell(false)" checked="checked">
+        <label for="nao">Não</label>
+        <div id="show-tel">
+            <label for="cellphone">Celular</label>
+            <input type="tel" id="cellphone" name="cellphone" placeholder="(00)12345-6789" pattern="[0-9]{2}-[0-9]{5}-[0-9]{4}">
+            <br>
+            <label for="telephone">Telefone</label>
+            <input type="tel" id="telephone" name="telephone" placeholder="(00)1234-5678" pattern="[0-9]{2}-[0-9]{4}-[0-9]{4}">
+        </div>
+        <br>
+        <input type="submit" onclick="teste()" value="Gerar Assinatura">
+    </form>
+    <div id="conteudo-assinatura">
+        <a id="img-lateral" href="https://www.indicium.tech" target="_blank"><img src="https://i.imgur.com/rqiGfD0.png"></a>
+        <div id="linha"></div>
+        <div id="direita">
+            <p id="nome">Henrique Alves</p>
+            <p id="cargo">Estagiário</p>
+            <p id="email">henrique.alves@indicium.tech</p>
+            <p class="telefone" id="cel">(00)12345-6789</p>
+            <p class="telefone" id="tel">(00)12345-6789</p>
+            <p id="endereco">Rua Patrício Farias, 55, Sala 403 - Itacorubi. Florianópolis, SC</p>
+            <span>
+                <a href="https://www.instagram.com/indiciumtech/"><img src="https://i.imgur.com/iI21dZE.png"></a>
+                <a href="https://www.facebook.com/indiciumtech/"><img src="https://i.imgur.com/fajnuzC.png"></a>
+                <a href="https://www.linkedin.com/company/indiciumtech"><img src="https://i.imgur.com/5gHBJsX.png"></a>
+                <p>@indicium.tech</p>
+            </span>
+        </div>
+    </div>
+</body>
+<style>
+    h1{
+        text-align: center;
+        color:#169fdb;
+        font-family: Roboto;
+        font-weight: 600;
+        font-size: 24pt;
+        text-transform: uppercase;
+        margin-top: 0;
+        margin-bottom:0px;
+    }
+    #tutorial{
+        font-family: Roboto;
+        color: #169fdb;
+        text-align: center;
+        font-size: 10pt;
+        width: 100%;
+        margin: auto;
+    }
+    #show-tel{
+        display: none;
+        margin-top: 25px;
+    }
+    form{
+        text-align: center;
+        justify-content: center;
+    }
+
+    label{
+        font-family: Roboto;
+        font-weight: 400;
+        font-size: 12pt;
+        color:#169fdb;
+    }
+    input[type=submit]{
+        color:white;
+        border: solid;
+        border-radius:1pt;
+        width: 175px;
+        height: 75px;
+        margin-top: 10px;
+        background-color: #169fdb;
+        border-radius: 20px;
+    }
+    input[type=submit]:hover{
+        color:#169fdb;
+        border-color: #169fdb;
+        background-color: white;
+    }
+
+    input[type=tel]{
+        width: 15%;
+        height: 30px;
+        margin:auto;
+        font-family: Roboto;
+        font-weight: 300;
+        border:none;
+        border-bottom: 1pt solid #169fdb;
+        outline: none;
+        display: block;
+        text-align: center;
+    }
+
+    input[type=text]{
+        width: 25%;
+        height: 30px;
+        margin:auto;
+        font-family: Roboto;
+        font-weight: 300;
+        border:none;
+        border-bottom: 1pt solid #169fdb;
+        outline: none;
+        display: block;
+        text-align: center;
+    }
+    input[type=radio]{
+        font-family: Roboto;
+        font-weight: 300;
+        outline: none;
+        display: inline-block;
+        width: 25px;
+        margin: 20px auto auto auto;
+    }
+
+
+    #conteudo-assinatura{
+        display: none;
+        width: 100%;
+        margin-top: 45px;
+        margin-left: 30%;
+    }
+    span a{
+        text-decoration: none;
+        margin: 0;
+    }
+    span img{
+        height: 15px;
+        width: 15px;
+        margin: 0;
+    }
+    span p{
+        display: inline-block;
+        transform: translateY(-4px);
+    }
+    #nome{
+        font-family: "Roboto";
+        font-weight: 500;
+        color: #169fdb;
+        font-size: 12pt;
+        margin-bottom:5px;
+    }
+    #cargo{
+        font-family: "Roboto";
+        font-size: 8pt;
+        font-style: italic;
+        font-weight: normal;
+        margin:0px;
+        color: #706f6f;
+    }
+    #email{
+        font-family: "Roboto";
+        font-size: 8pt;
+        color: #706f6f;
+    }
+    .telefone{
+        font-family: "Roboto";
+        font-size: 8pt;
+        color: #706f6f;  
+        font-weight: 400;
+        margin: 2px 0px 2px 0px;   
+    }
+    #endereco, span p{
+        font-family: "Roboto";
+        font-size: 7pt;
+        color: #706f6f;
+    }
+
+    #linha{
+        display: inline-block;
+        background-color: #169fdb;
+        width: 1pt;
+        height: 145px;
+        margin-left: 10px;
+        margin-right: 5px;
+        padding: 0;
+    }
+    #img-lateral{
+        display: inline-block;
+    }
+    #direita{
+        display: inline-block;
+        text-align: left;
+    }
+    img{
+        width: 140px;
+        height: auto;
+    }
+</style>
+<script type="text/javascript">
+    function showtell(status){
+        var show = document.getElementById('show-tel')
+        if (status == true){
+            show.style.display='block'
+        }
+        else{
+            show.style.display='none'
+        }
+    }
+    function teste() {
+            var Form = document.getElementById('form-assinatura');
+            var signature = document.getElementById('conteudo-assinatura');
+            signature.style.display="hidden";
+            for(var I = 0; I < Form.length; I++) {
+                var Name = Form[I].getAttribute('name');
+                var Value = Form[I].value;
+                switch(Name){
+                    case 'nome': document.getElementById('nome').textContent = Value;
+                    case 'cargo': document.getElementById('cargo').textContent = Value;
+                    case 'email': document.getElementById('email').textContent = Value;
+                    case 'cellphone':
+                        if (document.getElementById('show-tel').style.display === "none" || document.getElementById('show-tel').style.display === ""){
+                            document.getElementById('cel').textContent='\u00a0'
+                            document.getElementById('tel').textContent='\u00a0'
+                        }
+                        else if (Value===""){
+                            document.getElementById('cel').textContent='\u00a0';
+                        }
+                        else{
+                            document.getElementById('cel').textContent= Value;
+                        }
+                    case 'telephone':
+                        if (document.getElementById('show-tel').style.display === "none" || document.getElementById('show-tel').style.display === ""){
+                            document.getElementById('cel').textContent= '\u00a0'
+                            document.getElementById('tel').textContent='\u00a0'
+                        }
+                        else if (Value===""){
+                            document.getElementById('tel').textContent='\u00a0';
+                        }
+                        else{
+                            document.getElementById('tel').textContent= Value;
+                        }
+                }
+            }
+           signature.style.display="block";
+        }
+</script>
+</html>
